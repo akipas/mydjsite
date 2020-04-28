@@ -1,2 +1,2 @@
-# poll
+# mydjsite
 mon projet django
