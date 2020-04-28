@@ -1,0 +1,2 @@
+# mydjsite
+mon projet django
