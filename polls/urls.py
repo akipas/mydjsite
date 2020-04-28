@@ -13,6 +13,6 @@ urlpatterns = [
     
     path('date',views.date_actuelle, name='date_actuelle'),
 
-    path('addition/<int:nombre1>/<int:nombre2>/',views.addition, name='addition')
-    
+    path('addition/<int:nombre1>/<int:nombre2>/',views.addition, name='addition'),
+    path('<int:question_id>', views.view_articles, name='view_article')
 ]

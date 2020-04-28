@@ -1,7 +1,7 @@
 # Create your views here.
 from django.http import HttpResponse, Http404
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Question
 
 def index(request):
@@ -20,6 +20,7 @@ def results(request, question_id):
 
 def vote(request, question_id):
     return HttpResponse("You're voting on question %s." %question_id)
+        
 
 def date_actuelle(request):
     return render(request, 'polls/date.html', {'date':datetime.now()})
@@ -27,3 +28,9 @@ def date_actuelle(request):
 def addition(request, nombre1, nombre2):
     total = nombre1 + nombre2
     return render(request,'polls/addition.html', locals())
+
+
+def view_articles(request,question_id):
+    if question_id <= 10 :
+       return redirect(detail, question_id=10)
+    return HttpResponse("vous avez ete redirige")
