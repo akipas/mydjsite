@@ -18,3 +18,15 @@ class Article(models.Model):
            ordering = ['date']
        def __str__(self) : 
             return self.titre
+
+class Moteur(models.Model):
+    nom = models.CharField(max_length=25)
+    def __str__(self):
+        return self.nom
+
+class Voiture(models.Model):
+    nom = models.CharField(max_length=25)
+    moteur =models.OneToOneField(Moteur, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.nom
+    
