@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from blog.models import Article
 
@@ -10,5 +10,6 @@ def accueil(request):
 
 def lire(request, id):
     """afficher l'article en entier"""
-    pass
+    article = get_object_or_404(Article, id=id)
+    return render(request, 'blog/lire.html', {'article':article})
  
