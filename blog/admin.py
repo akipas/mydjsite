@@ -9,6 +9,7 @@ class ArticleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     ordering = ('date',)
     search_fields = ('titre', 'contenu')
+    prepopulated_fields = {'slug':('titre', ),}
     
     # Colonnes personalisees
     def apercu_contenu(self, article):
@@ -27,7 +28,7 @@ class ArticleAdmin(admin.ModelAdmin):
     ('General', {
         #classes :collapse pour permettre l'option d'afficher ou cacher
         'classes': ['collapse',],
-        'fields':('titre', 'auteur','categorie')
+        'fields':('titre', 'slug', 'auteur','categorie')
         }),
     #Fieldset 2: contenu de l'article
     ('Contenu de l\'article', {
