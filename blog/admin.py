@@ -9,7 +9,8 @@ class ArticleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
     ordering = ('date',)
     search_fields = ('titre', 'contenu')
-
+    
+    # Colonnes personalisees
     def apercu_contenu(self, article):
         """
         Retourne les 40 premiers caracteres du contenu de l'article, suivi
@@ -19,6 +20,22 @@ class ArticleAdmin(admin.ModelAdmin):
 
     #En tete de notre colonne
     apercu_contenu.short_description = 'Apercu du contenu'
+
+    #configuration du formulaire d'administration
+    fieldsets = (
+        #Fieldst 1: meta-info (titre, auteur,categorie)
+    ('General', {
+        #classes :collapse pour permettre l'option d'afficher ou cacher
+        'classes': ['collapse',],
+        'fields':('titre', 'auteur','categorie')
+        }),
+    #Fieldset 2: contenu de l'article
+    ('Contenu de l\'article', {
+        #description qui s'affiche au dessus du premier champ du fieldset
+        'description': 'Le formulaire accepte les balises HTML, utilisez-les a bon escient!',
+        'fields':('contenu',)
+        }),
+    )
     
 admin.site.register(Categorie)
 admin.site.register(Article, ArticleAdmin)
