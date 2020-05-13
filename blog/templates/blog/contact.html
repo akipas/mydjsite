@@ -1,0 +1,10 @@
+<html>
+{% if envoi%} Votre message a ete bien envoye{% endif %}
+
+<form action="{% url "contact" %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Submit" />
+</form>
+	
+</html>
