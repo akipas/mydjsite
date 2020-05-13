@@ -29,4 +29,4 @@ def contact(request):
         envoi = True
 
     #affichage de la page du formulaire
-    return(render,'blog/contact.html', locals)
+    return render(request,'blog/contact.html', locals())
