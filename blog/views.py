@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
+from django.contrib import admin
 from blog.models import Article
-from .forms import ContactForm
+from .forms import ContactForm, ArticleForm
 
 # Create your views here.
 def accueil(request):
@@ -18,7 +19,7 @@ def contact(request):
     """costruction du formulaire avec les donnees de l'utilisateur ou vide si l'utilisateur accede pour la premiere fois"""
     form = ContactForm(request.POST or None)
     #verification des donnees envoyees
-    #le methode envoie False s'il n'ya pas de donnees dans le formulaire
+    #la methode envoie False s'il n'ya pas de donnees dans le formulaire
     #ou qu'il contien des erreurs
     if form.is_valid():
         sujet = form.cleaned_data['sujet']
@@ -30,3 +31,16 @@ def contact(request):
 
     #affichage de la page du formulaire
     return render(request,'blog/contact.html', locals())
+
+def ajoutArticle(request):
+    form = ArticleForm(request.POST or None)
+    if form.is_valid():
+        titre = form.cleaned_data['titre']
+        slug = form.cleaned_data['slug']
+        auteur = form.cleaned_data['auteur']
+        contenu = form.cleaned_data['contenu']
+        categorie = form.cleaned_data['categorie']
+        form.save()
+        
+    return render(request, 'blog/ajouterA.html',locals())
+    

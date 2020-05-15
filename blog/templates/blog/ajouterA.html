@@ -1,0 +1,10 @@
+<html>
+{% if envoi %} votre article a ete bien enregistre {% endif %}
+
+<form action="{% url "ajoutArticle" %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Enregister" /> 
+</form>
+
+</html>
