@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponse
-from blog.models import Article
+from blog.models import Article,Inscription
 from .forms import ContactForm, ArticleForm, InscriptionForm
 
 # Create your views here.
@@ -57,5 +57,12 @@ def nouveau_inscrit(request):
         #sauvegarde = True
         return HttpResponse('succes')
     return render(request, 'blog/inscription.html', locals())
+
+def liste_inscription(request):
+    return render(
+        request,
+        'blog/liste.html',
+        {'inscriptions': Inscription.objects.all()}
+    )
 
     

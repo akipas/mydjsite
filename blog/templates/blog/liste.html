@@ -1,0 +1,9 @@
+<html>
+<h1>Liste des contacts</h1>
+{% for inscription in inscriptions %}
+	<h2>{{ inscription.nom }}</h2>
+	Adresse:{{ inscription.adresse }}<br/>
+	Passeport: <img src="{{ inscription.photo.url }}"/>
+{% endfor %}
+
+</html>

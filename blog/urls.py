@@ -7,5 +7,6 @@ urlpatterns = [
     path('contact',views.contact, name='contact'),
     path('ajouter',views.ajoutArticle, name='ajoutArticle'),
     path('inscription',views.nouveau_inscrit, name='nouveau_inscrit'),
+    path('liste',views.liste_inscription, name='liste_inscription'),
 
 ]
