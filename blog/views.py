@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import Http404
-from django.contrib import admin
+from django.http import Http404, HttpResponse
 from blog.models import Article
-from .forms import ContactForm, ArticleForm
+from .forms import ContactForm, ArticleForm, InscriptionForm
 
 # Create your views here.
 def accueil(request):
@@ -41,6 +40,22 @@ def ajoutArticle(request):
         contenu = form.cleaned_data['contenu']
         categorie = form.cleaned_data['categorie']
         form.save()
+        return HttpResponse('succes')
         
     return render(request, 'blog/ajouterA.html',locals())
+
+def nouveau_inscrit(request):
+    #sauvegarde = False
+    #ajout d'un argument request.FILES qui recueille les donnees autre que le texte, Ici photo
+    form = InscriptionForm(request.POST or None, request.FILES)
+    if form.is_valid():
+        #inscrit = Inscription()
+        nom = form.cleaned_data['nom']
+        adresse = form.cleaned_data['adresse']
+        photo = form.cleaned_data['photo']
+        form.save()
+        #sauvegarde = True
+        return HttpResponse('succes')
+    return render(request, 'blog/inscription.html', locals())
+
     

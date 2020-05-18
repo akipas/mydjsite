@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.db.models import Model
 
 # Create your models here.
 class Categorie(models.Model):
@@ -19,6 +20,15 @@ class Article(models.Model):
            ordering = ['date']
        def __str__(self) : 
             return self.titre
+
+class Inscription(models.Model):
+    nom = models.CharField(max_length=255)
+    adresse = models.TextField()
+    #dossier "photo/" va se creer automatiquement des le 1er enregistrement
+    photo = models.ImageField(upload_to="photo/")
+
+    def __str__(self):
+        return self.nom
 
 class Moteur(models.Model):
     nom = models.CharField(max_length=25)

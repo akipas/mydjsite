@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article
+from .models import Article, Inscription 
 
 class ContactForm(forms.Form):
     sujet = forms.CharField(max_length=100)
@@ -32,3 +32,14 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = '__all__'
+        
+class InscriptionForm(forms.ModelForm):
+    #nom = forms.CharField()
+    #adresse = forms.CharField(widget=forms.Textarea)
+    #photo = forms.ImageField()
+    class Meta:
+        model = Inscription
+        fields = '__all__'
+
+
+    

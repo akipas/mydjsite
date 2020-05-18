@@ -6,5 +6,6 @@ urlpatterns = [
     path('article/<int:id>-<slug:slug>', views.lire, name='lire'),
     path('contact',views.contact, name='contact'),
     path('ajouter',views.ajoutArticle, name='ajoutArticle'),
+    path('inscription',views.nouveau_inscrit, name='nouveau_inscrit'),
 
 ]

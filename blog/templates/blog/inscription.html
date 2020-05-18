@@ -1,0 +1,16 @@
+<html>
+<h1> Inscrivez-vous a notre blog</h1>
+
+
+
+<p>
+<!-- nouvel attribut enctype="multipart/form-data",
+ il permet au navigateur d'envoyer les ficheirs au serveur web -->
+	<form method="post" enctype="multipart/form-data" action="{% url "nouveau_inscrit" %}">
+		{% csrf_token %}
+		{{ form.as_p}}
+		<input type="submit" value="s'inscrire"/>
+	</form>
+</p>
+
+</html>
